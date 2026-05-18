@@ -1,5 +1,6 @@
 const showInputError = (formElement, inputElement, errorMessage, settings) => {
-  const errorElementId = `#${inputElement.id}-error`;
+  import FormValidator from "./components/FormValidator.js";
+  const newTodoValidator = new FormValidator(config, addTodoForm);
   const errorElement = formElement.querySelector(errorElementId);
   inputElement.classList.add(settings.inputErrorClass);
   errorElement.textContent = errorMessage;

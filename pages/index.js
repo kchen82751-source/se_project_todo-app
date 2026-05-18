@@ -8,7 +8,6 @@ const addTodoButton = document.querySelector(".button_action_add");
 const addTodoPopup = document.querySelector("#add-todo-popup");
 const addTodoForm = addTodoPopup.querySelector(".popup__form");
 const addTodoCloseBtn = addTodoPopup.querySelector(".popup__close");
-// const todoTemplate = document.querySelector("#todo-template"); -> remove
 const todosList = document.querySelector(".todos__list");
 
 const openModal = (modal) => {
@@ -50,10 +49,36 @@ addTodoForm.addEventListener("submit", (evt) => {
   closeModal(addTodoPopup);
 });
 
-initialTodos.forEach((item) => {
-  const todo = generateTodo(item);
-  todosList.append(todo);
+addTodoForm.addEventListener("submit", (evt) => {
+  // ... your existing code ...
+  const values = { name, date, id };
+
+  renderTodo(values); // Instead of the two lines
+
+  closeModal(addTodoPopup);
 });
+
+initialTodos.forEach((item) => {
+  renderTodo(item); // Much cleaner!
+});
+
+addTodoForm.addEventListener("submit", (evt) => {
+  evt.preventDefault();
+  // ... your existing code to create the todo ...
+
+  const todo = generateTodo(values);
+  todosList.append(todo);
+
+  // Add this line here:
+  newTodoValidator.resetValidation();
+
+  closeModal(addTodoPopup);
+});
+
+function renderTodo(todoData) {
+  const todo = generateTodo(todoData);
+  todosList.append(todo);
+}
 
 const newTodoValidator = new FormValidator(validationConfig, addTodoForm);
 newTodoValidator.enableValidation();
