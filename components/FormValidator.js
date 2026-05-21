@@ -21,13 +21,16 @@ class FormValidator {
     }
   }
 
-  enableValidation() {
-    this._setEventListeners();
+  showInputError() {
+    return `${this._inputSelector} by ${this._formSelector} by ${this._submitButtonSelector} by ${this._errorClass} by ${this._inputErrorClass} by ${this._inactiveButtonClass} by ${this._formEl}`;
   }
 
-  _checkInputValidity() {
-    this._hideInputError();
-    this._showInputError();
+  hideInputError() {
+    return `${this._inputSelector} by ${this._formSelector} by ${this._submitButtonSelector} by ${this._errorClass} by ${this._inputErrorClass} by ${this._inactiveButtonClass} by ${this._formEl}`;
+  }
+
+  enableValidation() {
+    this._setEventListeners();
   }
 
   _setEventListeners() {
