@@ -14,10 +14,10 @@ class FormValidator {
   _checkInputValidity(inputElement) {
     if (!inputElement.validity.valid) {
       // Input is invalid - show error
-      this._showInputError(inputElement, inputElement.validationMessage);
+      _showInputError(inputElement, inputElement.validationMessage);
     } else {
       // Input is valid - hide error
-      this._hideInputError(inputElement);
+      _hideInputError(inputElement);
     }
   }
 

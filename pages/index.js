@@ -34,6 +34,7 @@ addTodoCloseBtn.addEventListener("click", () => {
 });
 
 addTodoForm.addEventListener("submit", (evt) => {
+  renderTodo(values); // Instead of the two lines
   evt.preventDefault();
   const name = evt.target.name.value;
   const dateInput = evt.target.date.value;
@@ -46,33 +47,12 @@ addTodoForm.addEventListener("submit", (evt) => {
   const values = { name, date, id };
   const todo = generateTodo(values);
   todosList.append(todo);
-  closeModal(addTodoPopup);
-});
-
-addTodoForm.addEventListener("submit", (evt) => {
-  // ... your existing code ...
-  const values = { name, date, id };
-
-  renderTodo(values); // Instead of the two lines
-
+  newTodoValidator.resetValidation();
   closeModal(addTodoPopup);
 });
 
 initialTodos.forEach((item) => {
   renderTodo(item); // Much cleaner!
-});
-
-addTodoForm.addEventListener("submit", (evt) => {
-  evt.preventDefault();
-  // ... your existing code to create the todo ...
-
-  const todo = generateTodo(values);
-  todosList.append(todo);
-
-  // Add this line here:
-  newTodoValidator.resetValidation();
-
-  closeModal(addTodoPopup);
 });
 
 function renderTodo(todoData) {
