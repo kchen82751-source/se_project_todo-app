@@ -13,19 +13,17 @@ class FormValidator {
 
   _checkInputValidity(inputElement) {
     if (!inputElement.validity.valid) {
-      // Input is invalid - show error
-      _showInputError(inputElement, inputElement.validationMessage);
+      this._showInputError(inputElement, inputElement.validationMessage);
     } else {
-      // Input is valid - hide error
-      _hideInputError(inputElement);
+      this._hideInputError(inputElement);
     }
   }
 
-  showInputError() {
+  _showInputError() {
     return `${this._inputSelector} by ${this._formSelector} by ${this._submitButtonSelector} by ${this._errorClass} by ${this._inputErrorClass} by ${this._inactiveButtonClass} by ${this._formEl}`;
   }
 
-  hideInputError() {
+  _hideInputError() {
     return `${this._inputSelector} by ${this._formSelector} by ${this._submitButtonSelector} by ${this._errorClass} by ${this._inputErrorClass} by ${this._inactiveButtonClass} by ${this._formEl}`;
   }
 
@@ -56,8 +54,12 @@ class FormValidator {
   resetValidation() {
     this._formEl.reset();
     this._inputList.forEach((input) => this._hideInputError(input));
-    this._toggleButtonState();
+    this._toggleButtonState((input) => this._hideInputError(input));
   }
+}
+
+_toggleButtonState() {
+  this._buttonElement.classList.remove(this._inactiveButtonClass);
 }
 
 export default FormValidator;

@@ -23,14 +23,6 @@ class Todo {
     this._todoLabel.setAttribute("for", `todo-${this._data.id}`);
   }
 
-  _setEventListeners() {
-    // Query for the delete button only when setting up its event listener
-    const todoDeleteBtn = this._todoElement.querySelector(".todo__delete-btn");
-    todoDeleteBtn.addEventListener("click", () => {
-      // delete functionality here
-    });
-  }
-
   getView() {
     this._todoElement = this._templateElement.content
       .querySelector(".todo")
