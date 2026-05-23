@@ -58,8 +58,4 @@ class FormValidator {
   }
 }
 
-_toggleButtonState() {
-  this._buttonElement.classList.remove(this._inactiveButtonClass);
-}
-
 export default FormValidator;
