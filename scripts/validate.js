@@ -1,10 +1,10 @@
 const showInputError = (formElement, inputElement, errorMessage, settings) => {
   import FormValidator from "./components/FormValidator.js";
   const newTodoValidator = new FormValidator(config, addTodoForm);
-  const errorElement = formElement.querySelector(errorElementId);
-  inputElement.classList.add(settings.inputErrorClass);
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  inputElement.classList.add("form__input_type_error");
   errorElement.textContent = errorMessage;
-  errorElement.classList.add(settings.errorClass);
+  errorElement.classList.add("form__input-error_active");
 };
 
 const hideInputError = (formElement, inputElement, settings) => {

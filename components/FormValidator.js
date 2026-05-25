@@ -9,8 +9,6 @@ class FormValidator {
     this._formEl = formEl;
   }
 
-  // Todo - implement all the other methods
-
   _checkInputValidity(inputElement) {
     if (!inputElement.validity.valid) {
       this._showInputError(inputElement, inputElement.validationMessage);
@@ -19,12 +17,31 @@ class FormValidator {
     }
   }
 
-  _showInputError() {
-    return `${this._inputSelector} by ${this._formSelector} by ${this._submitButtonSelector} by ${this._errorClass} by ${this._inputErrorClass} by ${this._inactiveButtonClass} by ${this._formEl}`;
+  _toggleButtonState() {
+    if (hasInvalidInput(inputList)) {
+      this._buttonElement.classList.add(this._inactiveButtonClass);
+      this._buttonElement.disabled = true;
+    } else {
+      this._buttonElement.classList.remove(this._inactiveButtonClass);
+      this._buttonElement.disabled = false;
+    }
   }
 
-  _hideInputError() {
-    return `${this._inputSelector} by ${this._formSelector} by ${this._submitButtonSelector} by ${this._errorClass} by ${this._inputErrorClass} by ${this._inactiveButtonClass} by ${this._formEl}`;
+  _showInputError(inputElement, errorMessage) {
+    const errorElement = this._formEl.querySelector(
+      `.${inputElement.id}-error`,
+    );
+    inputElement.classList.add(this._inputErrorClass);
+    errorElement.textContent = errorMessage;
+    errorElement.classList.add(this._errorClass);
+  }
+
+  _hideInputError(inputElement) {
+    const errorElementId = `#${inputElement.id}-error`;
+    const errorElement = this._formEl.querySelector(errorElementId);
+    inputElement.classList.remove(this._inputErrorClass);
+    errorElement.classList.remove(this._errorClass);
+    errorElement.textContent = "";
   }
 
   enableValidation() {
@@ -34,6 +51,10 @@ class FormValidator {
   _setEventListeners() {
     this._inputList = Array.from(
       this._formEl.querySelectorAll(this._inputSelector),
+    );
+
+    this._buttonElement = this._formEl.querySelector(
+      this._submitButtonSelector,
     );
 
     this._inputList.forEach((input) => {
