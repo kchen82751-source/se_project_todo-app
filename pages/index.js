@@ -28,9 +28,15 @@ addTodoCloseBtn.addEventListener("click", () => {
   closeModal(addTodoPopup);
 });
 
+function generateTodo(data) {
+  const todo = new Todo(data, "#todo-template");
+  const todoElement = todo.getView();
+  return todoElement;
+}
+
 addTodoForm.addEventListener("submit", (evt) => {
-  renderTodo(values); // Instead of the two lines
   evt.preventDefault();
+  renderTodo(values); // Instead of the two lines
   const name = evt.target.name.value;
   const dateInput = evt.target.date.value;
 
@@ -40,8 +46,7 @@ addTodoForm.addEventListener("submit", (evt) => {
 
   const id = uuidv4();
   const values = { name, date, id };
-  const todo = generateTodo(values);
-  todosList.append(todo);
+  renderTodo(values);
   newTodoValidator.resetValidation();
   closeModal(addTodoPopup);
 });

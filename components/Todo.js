@@ -31,7 +31,14 @@ class Todo {
     const todoNameEl = this._todoElement.querySelector(".todo__name");
 
     todoNameEl.textContent = this._data.name;
-    // TODO - implement dates
+    const todo = {
+      name: "Read the sprint's theory",
+      date: this._data.date,
+    };
+
+    // Then when rendering:
+    const formattedDate = todo.date.toLocaleDateString("en-US");
+    console.log(formattedDate);
 
     this._generateCheckboxEl();
     this._setEventListeners();
