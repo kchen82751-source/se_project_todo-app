@@ -31,14 +31,16 @@ class Todo {
     const todoNameEl = this._todoElement.querySelector(".todo__name");
 
     todoNameEl.textContent = this._data.name;
-    const todo = {
-      name: "Read the sprint's theory",
-      date: this._data.date,
-    };
+    const todoDate = this._todoElement.querySelector(".todo__date");
+    const dueDate = new Date(this._data.date);
 
-    // Then when rendering:
-    const formattedDate = todo.date.toLocaleDateString("en-US");
-    console.log(formattedDate);
+    if (!isNaN(dueDate)) {
+      todoDate.textContent = `Due: ${dueDate.toLocaleString("en-US", {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      })}`;
+    }
 
     this._generateCheckboxEl();
     this._setEventListeners();

@@ -6,7 +6,7 @@ import FormValidator from "../components/FormValidator.js";
 
 const addTodoButton = document.querySelector(".button_action_add");
 const addTodoPopup = document.querySelector("#add-todo-popup");
-const addTodoForm = addTodoPopup.querySelector(".popup__form");
+const addTodoForm = document.forms["add-todo-form"];
 const addTodoCloseBtn = addTodoPopup.querySelector(".popup__close");
 const todosList = document.querySelector(".todos__list");
 
@@ -36,7 +36,6 @@ function generateTodo(data) {
 
 addTodoForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
-  renderTodo(values); // Instead of the two lines
   const name = evt.target.name.value;
   const dateInput = evt.target.date.value;
 
