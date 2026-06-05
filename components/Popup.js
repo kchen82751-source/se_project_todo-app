@@ -1,13 +1,14 @@
 class Popup {
   constructor({ popupSelector }) {
     this._popupElement = document.querySelector(popupSelector);
-    this._popupCloseBtn = this._popupElement.querySelector("popup__close");
+    this._popupCloseBtn = this._popupElement.querySelector(".popup__close");
     console.log(this._popupElement);
   }
 
   _handleEscapeClose(evt) {
     if (evt.key === "Escape") {
       // TODO - call the close method
+      this.close();
     }
   }
 
@@ -19,12 +20,14 @@ class Popup {
   close() {
     // TODO - remove the class from the popup element
     console.log("close method called");
+    this._popupElement.classList.remove("popup_visible");
     // TODO - remove the escape listener
   }
 
   setEventListeners() {
     // This one listener will handle close button and modal listener
     this._popupElement.addEventListener("mousedown", (evt) => {
+      this.close();
       // if the event target's classList contains "popup__close" or "popup"
       // then close the modal
     });

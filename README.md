@@ -1,14 +1,15 @@
 # Simple Todo App
 
-Give a brief description of the project here. Feel free to give it a different name.
+For this project, Im creating a checklist webpage that is use for making list of thing to do, just like using a reminder app in your phone.
 
 ## Functionality
 
-Give a more detailed explanation of the project and its functionality.
+How this project works is you add and check out a list of tast in you do to list. Similar using a reminder app in your phone, all you have to do is to click "+ Add Todo" Write down the name or description of your task and then schedual due Date. and when you task is done, you just simply click a check box or delet button. And if you have any new tast, repeat the same process.
 
 ## Technology
 
-Give a description of the technologies and techniques used. Pictures, GIFs, or screenshots that detail the project features are recommended.
+I use my double screen computer for visual studio code. On visual studio code I use index.js, Todo.js, TodoCounter.js, Popup.js, constants,js, Section.js, PopupWithForm.js, TodoCounter.js, and index.html to construct the checklist webpage by construct the the check list and popup button
+![alt text](<Sprint 8 project.png>)
 
 ## Deployment
 
