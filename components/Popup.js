@@ -19,7 +19,7 @@ class Popup {
 
   close() {
     // TODO - remove the class from the popup element
-    console.log("close method called");
+
     this._popupElement.classList.remove("popup_visible");
     // TODO - remove the escape listener
   }
@@ -27,7 +27,7 @@ class Popup {
   setEventListeners() {
     // This one listener will handle close button and modal listener
     this._popupElement.addEventListener("mousedown", (evt) => {
-      this.close();
+      if (evt.target) evt.target.classList.contains(this._popupElement);
       // if the event target's classList contains "popup__close" or "popup"
       // then close the modal
     });

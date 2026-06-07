@@ -13,7 +13,7 @@ class PopupWithForm extends Popup {
 
     const inputValues = {};
     this._inputList.forEach((input) => {
-      values[input.name] = input.value;
+      inputValues[input.name] = input.value;
       // TODO
       // add a key/value pair to the values object for each input
       // the key is input.name
