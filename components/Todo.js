@@ -13,16 +13,17 @@ class Todo {
       this._todoElement.remove();
       this._todoElement = null;
     });
-    this._handleCheck.addEventListener("change", () => {
-      this._data.completed = !this._data.completed;
+    this._todoCheckBoxEl.addEventListener("change", () => {
+      // this._data.completed = !this._data.completed;
+      this._handleCheck({ target: this._todoCheckBoxEl });
     });
   }
 
   _generateCheckboxEl() {
-    this._handleCheck = this._todoElement.querySelector(".todo__completed");
+    this._todoCheckBoxEl = this._todoElement.querySelector(".todo__completed");
     this._todoLabel = this._todoElement.querySelector(".todo__label");
-    this._handleCheck.checked = this._data.completed;
-    this._handleCheck.id = `todo-${this._data.id}`;
+    this._todoCheckBoxEl.checked = this._data.completed;
+    this._todoCheckBoxEl.id = `todo-${this._data.id}`;
     this._todoLabel.setAttribute("for", `todo-${this._data.id}`);
   }
 
