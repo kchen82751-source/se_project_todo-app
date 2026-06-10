@@ -5,11 +5,11 @@ class PopupWithForm extends Popup {
     super({ popupSelector });
     this._popupForm = this._popupElement.querySelector(".popup__form");
     this._handleFormSubmit = handleFormSubmit;
+    this._inputList = this._popupForm.querySelectorAll(".popup__input");
   }
 
   _getInputValues() {
     // move to constructor
-    this._inputList = this._popupForm.querySelectorAll(".popup__input");
 
     const inputValues = {};
     this._inputList.forEach((input) => {
@@ -21,6 +21,10 @@ class PopupWithForm extends Popup {
       // need to use brackets notation, not dot notation
     });
     return inputValues;
+  }
+
+  getForm() {
+    return this._popupForm;
   }
 
   setEventListeners() {

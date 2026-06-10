@@ -43,16 +43,14 @@ addTodoPopup.setEventListeners();
 const section = new Section({
   items: initialTodos,
   renderer: (todo) => {
-    const element = generateTodo(todo);
-    section.addItem(element);
+    renderTodo(todo);
   },
   containerSelector: ".todos__list",
 });
 section.renderItems();
 
-function handleCheck(evt) {
-  const isChecked = evt.target.checked;
-  todoCounter.updateCompleted(isChecked);
+function handleCheck(completed) {
+  todoCounter.updateCompleted(completed);
 }
 
 function handleDelete(completed) {
